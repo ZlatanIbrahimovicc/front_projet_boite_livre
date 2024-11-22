@@ -1,1 +1,16 @@
-<p>tableau works!</p>
+<table>
+  <thead>
+    <th>nom</th>
+    <th>quantite</th>
+    <th>description</th>
+    <th>Point Géo</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let box of Boxes">
+      <td>{{ box.nom }}</td>
+      <td>{{ box.quantite }}</td>
+      <td>{{ box.description }}</td>
+      <td>{{ box.point_geo }}</td>
+    </tr>
+  </tbody>
+</table>

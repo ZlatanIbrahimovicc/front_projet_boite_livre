@@ -1,24 +1,29 @@
 import {Component, OnInit} from '@angular/core';
 import {Box} from "../models/box";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {BoxService} from "../services/box.service";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-tableau',
   standalone: true,
-  imports: [],
+  imports: [
+    NgForOf,
+    HttpClientModule
+  ],
   templateUrl: './tableau.component.html',
-  styleUrl: './tableau.component.css'
+  styleUrls: ['./tableau.component.css']
 })
 export class TableauComponent implements OnInit {
-  Boxs : Box[] = [];
+  Boxes: Box[] = [];
+
   ngOnInit(): void {
     this.BoxService.getAll().subscribe((data: Box[]) => {
-
-      this.Boxs = data;
+      this.Boxes = data;
     });
-
   }
-  constructor(protected override http: HttpClient, private BoxService : BoxService) {
+
+  constructor(private BoxService : BoxService) {
   }
 
 }
