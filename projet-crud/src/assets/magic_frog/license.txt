@@ -1,0 +1,8 @@
+Model Information:
+* title:	Magic Frog
+* source:	https://sketchfab.com/3d-models/magic-frog-37fd63ef16854762959a6a40e250c96a
+* author:	David Glynch (https://sketchfab.com/yaveselyigolovastic)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
