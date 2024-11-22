@@ -12,7 +12,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 })
 export class HomeComponent implements AfterViewInit {
 
-  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>; // id du canva pour l'utiliser dans le fichier html
 
   constructor() { }
 
@@ -52,8 +52,9 @@ export class HomeComponent implements AfterViewInit {
       const frog = gltf.scene;
 
       // Agrandir le modèle du livre
-      frog.scale.set(2.4, 2.4, 2.4); // Ajuste ces valeurs pour agrandir le modèle
+      frog.scale.set(2.4, 2.4, 2.4);
 
+      // affichage de la grnouille
       scene.add(frog);
 
       const animate = () => {
