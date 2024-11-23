@@ -22,12 +22,11 @@ export class HomeComponent implements AfterViewInit {
 
   createScene(): void {
     const canvas = this.canvasRef.nativeElement;
-    const renderer = new THREE.WebGLRenderer({ canvas });
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     // Changer la couleur de fond de la scène
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 20;
@@ -51,8 +50,8 @@ export class HomeComponent implements AfterViewInit {
     loader.load('assets/magic_frog/scene.gltf', (gltf) => {
       const frog = gltf.scene;
 
-      // Agrandir le modèle du livre
-      frog.scale.set(2.4, 2.4, 2.4);
+      // Agrandir le modèle de la grenuille
+      frog.scale.set(1.5, 1.5, 1.5);
 
       // affichage de la grnouille
       scene.add(frog);
