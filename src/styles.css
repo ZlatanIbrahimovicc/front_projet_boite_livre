@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body{
+  margin:0;
+  padding:0;
+  background: #e2d1c3 url("https://les-roseaux.dev/images/triangleVert2.png") repeat 0 0;
+  -webkit-animation: 20s linear 0s normal none infinite animate;
+  -moz-animation: 20s linear 0s normal none infinite animate;
+  -o-animation: 20s linear 0s normal none infinite animate;
+  animation: 20s linear 0s normal none infinite animate;
+
+}
+
+@-webkit-keyframes animate {
+  from {background-position:0 0;}
+  to {background-position: 500px 0;}
+}
+
+@-moz-keyframes animate {
+  from {background-position:0 0;}
+  to {background-position: 500px 0;}
+}
+
+@-ms-keyframes animate {
+  from {background-position:0 0;}
+  to {background-position: 500px 0;}
+}
+
+@-o-keyframes animate {
+  from {background-position:0 0;}
+  to {background-position: 500px 0;}
+}
+
+@keyframes animate {
+  from {background-position:0 0;}
+  to {background-position: 500px 0;}
+}

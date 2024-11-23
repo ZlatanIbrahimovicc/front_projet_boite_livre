@@ -1,0 +1,36 @@
+<div class="mat-elevation-z8 table">
+  <div class="filter">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let box"> {{box.nom}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantite">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Quantité </mat-header-cell>
+      <mat-cell *matCellDef="let box"> {{box.quantite}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let box"> {{box.description}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="point_geo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Coordonnées géographiques </mat-header-cell>
+      <mat-cell *matCellDef="let box"> {{box.point_geo}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons>
+  </mat-paginator>
+</div>
