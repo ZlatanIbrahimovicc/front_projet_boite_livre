@@ -14,10 +14,22 @@ export class BoxService extends Service {
   }
 
   override getAll(): Observable<Box[]> {
-    return this.http.get<Box[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
+    return super.getAll();
   }
 
-  override create(box: { name: string; id: number }): Observable<Object> {
-    return this.http.post(`${this.API_URL}/&{this.API_ENTITY_NAME}`, box);
+  override getById(id: number): Observable<Box> {
+    return super.getById(id);
+  }
+
+  override create(entity: any): Observable<any> {
+    return super.create(entity);
+  }
+
+  override update(entity: any): Observable<any> {
+    return super.update(entity);
+  }
+
+  override delete(id: number): Observable<any> {
+    return super.delete(id);
   }
 }

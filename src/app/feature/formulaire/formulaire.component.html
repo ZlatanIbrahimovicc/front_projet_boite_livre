@@ -1,0 +1,26 @@
+<div *ngIf="item" class="container">
+  <mat-card class="card">
+    <mat-card-title>Détails de la boîte sélectionnée</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="input">
+          <input matInput placeholder="Nom" type="text" id="nom" name="nom" [(ngModel)]="item.nom" disabled>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input">
+          <input matInput placeholder="Quantité" type="number" id="quantite" name="quantite" [(ngModel)]="item.quantite">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input textarea">
+          <textarea matInput placeholder="Description" id="description" name="description" [(ngModel)]="item.description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input">
+          <input matInput placeholder="Point Géo" type="text" id="point_geo" name="point_geo" [(ngModel)]="item.point_geo">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

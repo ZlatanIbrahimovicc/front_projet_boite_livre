@@ -13,8 +13,23 @@ export class Service {
       .pipe(catchError(this.handleError));
   }
 
+  getById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
   create(entity: any): Observable<any> {
     return this.http.post(`${this.API_URL}/${this.API_ENTITY_NAME}`, entity)
+      .pipe(catchError(this.handleError));
+  }
+
+  update(entity: any): Observable<any> {
+    return this.http.put(`${this.API_URL}/${this.API_ENTITY_NAME}`, entity)
+      .pipe(catchError(this.handleError));
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`)
       .pipe(catchError(this.handleError));
   }
 }

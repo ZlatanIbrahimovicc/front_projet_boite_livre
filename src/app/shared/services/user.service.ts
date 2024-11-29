@@ -17,7 +17,7 @@ export class ReservationService extends Service {
     return this.http.get<User[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
   }
 
-  override create(user: { name: string; id: number }): Observable<Object> {
-    return this.http.post(`${this.API_URL}/${this.API_ENTITY_NAME}`, user);
+  override create(entity: any): Observable<any> {
+    return this.http.post(`${this.API_URL}/${this.API_ENTITY_NAME}`, entity);
   }
 }

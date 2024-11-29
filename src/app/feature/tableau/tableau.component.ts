@@ -20,6 +20,7 @@ import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {MatFormField} from "@angular/material/form-field";
 import {Observable} from 'rxjs';
 import {MatInput} from "@angular/material/input";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-tableau',
@@ -52,7 +53,8 @@ export class TableauComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private boxService: BoxService) {}
+  constructor(private boxService: BoxService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.boxService.getAll().subscribe((data: Box[]) => {
@@ -72,5 +74,9 @@ export class TableauComponent implements OnInit, AfterViewInit {
 
   private filterData(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  goToForm(id: number) {
+    this.router.navigate([`/boiteALivre/${id}/edit`]).then(r => r);
   }
 }
