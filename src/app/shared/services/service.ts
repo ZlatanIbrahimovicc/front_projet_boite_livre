@@ -24,7 +24,7 @@ export class Service {
   }
 
   update(entity: any): Observable<any> {
-    return this.http.put(`${this.API_URL}/${this.API_ENTITY_NAME}`, entity)
+    return this.http.put(`${this.API_URL}/${this.API_ENTITY_NAME}/{entity.id}`, entity)
       .pipe(catchError(this.handleError));
   }
 

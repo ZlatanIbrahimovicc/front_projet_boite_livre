@@ -1,8 +1,16 @@
 export interface User {
   id: number;
-  prenom: string;
   nom: string;
-  email: string;
+  prenom: string;
+  mail: string;
+  username: string;
+}
+
+export interface LoginData {
   username: string;
   password: string;
+}
+
+export interface LoginResponse{
+  message: string;
 }

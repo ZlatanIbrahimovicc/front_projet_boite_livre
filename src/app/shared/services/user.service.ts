@@ -7,7 +7,7 @@ import {Service} from "./service";
 @Injectable({
   providedIn: 'root'
 })
-export class ReservationService extends Service {
+export class UserService extends Service {
   constructor(protected override http: HttpClient) {
     super(http);
     this.API_ENTITY_NAME = 'users';
