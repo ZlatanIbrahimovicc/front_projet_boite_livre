@@ -15,8 +15,6 @@ export class AuthService {
   private router = inject(Router);
   private userService = inject(UserService);
 
-  public userProfile: User | null = null;
-
   public userLoggedIn = new EventEmitter<void>();
 
   async login(loginData: LoginData): Promise<void> {
@@ -30,7 +28,7 @@ export class AuthService {
         await this.fetchUserProfile(response.body as LoginResponse);
         this.userLoggedIn.emit();
       } else {
-        this.userProfile = null;
+        localStorage.removeItem('user');
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -40,7 +38,7 @@ export class AuthService {
 
   async logOut(): Promise<void> {
     try {
-      this.userProfile = null;
+      localStorage.removeItem('user');
       await this.router.navigate(['/login']);
     } catch (error) {
       console.error('Logout error:', error);
@@ -51,7 +49,7 @@ export class AuthService {
   private async fetchUserProfile(id: LoginResponse): Promise<void> {
     try {
       this.userService.getById(Number(id)).subscribe((response) => {
-        this.userProfile = response;
+        localStorage.setItem('user', JSON.stringify(response));
       });
     } catch (error) {
       console.error('Fetch user profile error:', error);
@@ -72,5 +70,9 @@ export class AuthService {
       }
     }
     return throwError(() => new Error(errorMessage));
+  }
+
+  public getUser(): User | null {
+    return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null;
   }
 }

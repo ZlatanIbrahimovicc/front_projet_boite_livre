@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   }
 
   userIsConnected() {
-    return this.authService.userProfile !== null;
+    return this.authService.getUser() !== null;
   }
 
   disconnect() {

@@ -22,7 +22,7 @@ import {LoginData} from "../../shared/models/user";
     NgIf
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -38,28 +38,28 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-async onLogin(): Promise<void> {
-  if (this.loginForm.invalid) {
-    return;
-  }
+  async onLogin(): Promise<void> {
+    if (this.loginForm.invalid) {
+      return;
+    }
 
-  try {
-    let loginData: LoginData = {
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password
-    }
-    await this.authService.login(loginData);
-    if (this.authService.userProfile === null) {
-      this.errors.push('Login failed');
-    } else {
-      await this.router.navigate(['/boiteALivre']);
-    }
-  } catch (error: any) {
-    if (error.status === 401) {
-      this.errors.push('Invalid username or password');
-    } else {
-      this.errors.push('An unexpected error occurred');
+    try {
+      let loginData: LoginData = {
+        username: this.loginForm.value.username,
+        password: this.loginForm.value.password
+      }
+      await this.authService.login(loginData);
+      if (this.authService.getUser() === null) {
+        this.errors.push('Login failed');
+      } else {
+        await this.router.navigate(['/boiteALivre']);
+      }
+    } catch (error: any) {
+      if (error.status === 401) {
+        this.errors.push('Invalid username or password');
+      } else {
+        this.errors.push('An unexpected error occurred');
+      }
     }
   }
-}
 }

@@ -10,7 +10,7 @@ export const needLoginGuard: CanActivateFn = async () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.userProfile !== null) {
+  if (authService.getUser() !== null) {
     console.log('User is authenticated.');
     return true;
   } else {
@@ -27,7 +27,7 @@ export const needLogOutGuard: CanActivateFn = async () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.userProfile !== null) {
+  if (authService.getUser() !== null) {
     console.log('User is authenticated. Redirecting to main page.');
     await router.navigate(['/materials']);
     return false;

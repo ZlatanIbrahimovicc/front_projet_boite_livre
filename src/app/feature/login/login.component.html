@@ -3,8 +3,8 @@
   <title></title>
 </head>
 
-<mat-card id="login-section">
-  <mat-card-header>
+<mat-card id="login-section" class="login-card">
+  <mat-card-header class="header">
     <div id="titre_connexion">
       <span class="icon material-symbols-outlined">login</span>
     </div>
@@ -17,17 +17,13 @@
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div>
-        <span id="placeholder_email" class="placeholder_de_fou">
-          <p>Identifiant :</p>
-        </span>
-        <input id="email1" type="text" formControlName="username">
+        <label for="email">Identifiant :</label>
+        <input id="email" type="text" formControlName="username">
       </div>
 
       <div>
-        <span id="placeholder_password" class="placeholder_de_fou">
-          <p>Mot de passe :</p>
-        </span>
-        <input id="password1" type="password" formControlName="password">
+        <label for="password">Mot de passe :</label>
+        <input id="password" type="password" formControlName="password">
       </div>
 
       <button type="submit">Se Connecter</button>
