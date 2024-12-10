@@ -1,0 +1,32 @@
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=login" />
+  <title></title>
+</head>
+
+<mat-card id="login-section" class="login-card">
+  <mat-card-header class="header">
+    <div id="titre_connexion">
+      <span class="icon material-symbols-outlined">login</span>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="error-message" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div>
+        <label for="email">Identifiant :</label>
+        <input id="email" type="text" formControlName="username">
+      </div>
+
+      <div>
+        <label for="password">Mot de passe :</label>
+        <input id="password" type="password" formControlName="password">
+      </div>
+
+      <button type="submit">Se Connecter</button>
+    </form>
+  </mat-card-content>
+</mat-card>
