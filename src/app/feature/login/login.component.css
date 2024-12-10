@@ -8,6 +8,12 @@
   margin-bottom: 20px;
 }
 
+.login-card .error-message {
+  color: red;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
 .login-card input {
   width: 100%;
   margin: 10px 0;

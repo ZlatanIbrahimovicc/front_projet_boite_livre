@@ -47,29 +47,26 @@ export class AuthService {
   }
 
   private async fetchUserProfile(id: LoginResponse): Promise<void> {
-    try {
-      this.userService.getById(Number(id)).subscribe((response) => {
-        localStorage.setItem('user', JSON.stringify(response));
+    return new Promise((resolve, reject) => {
+      this.userService.getById(Number(id)).subscribe({
+        next: (response) => {
+          localStorage.setItem('user', JSON.stringify(response));
+          resolve();
+        },
+        error: (error) => {
+          console.error('Fetch user profile error:', error);
+          reject(error);
+        }
       });
-    } catch (error) {
-      console.error('Fetch user profile error:', error);
-    }
+    });
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
-    let errorMessage = 'An unknown error occurred!';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Error: ${error.error.message}`;
+    if (error.status === 401) {
+      return throwError(() => ({ 401: 'Invalid username or password' }));
     } else {
-      if (error.status === 401) {
-        errorMessage = 'Invalid username or password';
-      } else if (error.error instanceof ProgressEvent) {
-        errorMessage = `Error: ${error.message}`;
-      } else {
-        errorMessage = `Error: ${error.error}`;
-      }
+      return throwError(() => ({400: 'An error occurred. Please try again.'}));
     }
-    return throwError(() => new Error(errorMessage));
   }
 
   public getUser(): User | null {

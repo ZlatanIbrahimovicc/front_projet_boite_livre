@@ -11,8 +11,8 @@
   </mat-card-header>
 
   <mat-card-content>
-    <div id="message_erreur" *ngIf="errors.auth">
-      <p>Identifiant ou Mot de passe incorrect. Veuillez réessayer.</p>
+    <div class="error-message" *ngIf="error">
+      <p>{{ error }}</p>
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">

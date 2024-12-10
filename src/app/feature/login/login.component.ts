@@ -8,7 +8,7 @@ import {
 import { AuthService } from "../../shared/auth/auth.service";
 import { Router } from "@angular/router";
 import { MatCard, MatCardContent, MatCardHeader } from "@angular/material/card";
-import { NgIf } from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {LoginData} from "../../shared/models/user";
 
 @Component({
@@ -19,14 +19,15 @@ import {LoginData} from "../../shared/models/user";
     MatCardHeader,
     MatCardContent,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    NgForOf
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  errors: any = [];
+  error: string = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -47,18 +48,18 @@ export class LoginComponent implements OnInit {
       let loginData: LoginData = {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password
-      }
+      };
       await this.authService.login(loginData);
       if (this.authService.getUser() === null) {
-        this.errors.push('Login failed');
+        this.error = 'Invalid username or password';
       } else {
         await this.router.navigate(['/boiteALivre']);
       }
     } catch (error: any) {
-      if (error.status === 401) {
-        this.errors.push('Invalid username or password');
+      if (401 in error) {
+        this.error = 'Invalid username or password';
       } else {
-        this.errors.push('An unexpected error occurred');
+        this.error = 'An error occurred. Please try again.';
       }
     }
   }
