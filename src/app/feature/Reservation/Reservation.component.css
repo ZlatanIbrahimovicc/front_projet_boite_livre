@@ -1,0 +1,41 @@
+.container {
+  margin-top: 20px;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container .card {
+  margin-top: 20px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container mat-card-title {
+  text-align: center;
+  margin: 20px;
+}
+
+.container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .input {
+  width: 250%;
+  margin: 10px;
+}
+
+.container .textarea {
+
+}
