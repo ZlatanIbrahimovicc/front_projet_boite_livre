@@ -1,0 +1,14 @@
+<mat-card *ngFor="let box of dataSource.data" class="box-card">
+  <mat-card-header>
+    <mat-card-title>{{ box.nom }}</mat-card-title>
+    <mat-card-subtitle>Quantité : {{ box.quantite }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Description : {{ box.description }}</p>
+    <p>Coordonnées géographiques : {{ box.point_geo }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button *ngIf="authService.getUser() !== null" (click)="goToEdit(box.id)">Edit</button>
+    <button mat-button (click)="book(box.id)">Réserver</button>
+  </mat-card-actions>
+</mat-card>

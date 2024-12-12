@@ -77,6 +77,6 @@ export class TableauComponent implements OnInit, AfterViewInit {
   }
 
   goToForm(id: number) {
-    this.router.navigate([`/boite-a-livres/${id}/edit`]).then(r => r);
+    this.router.navigate([`/boite-a-livres/${id}`]).then(r => r);
   }
 }
