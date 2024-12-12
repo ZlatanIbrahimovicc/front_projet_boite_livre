@@ -3,6 +3,7 @@
     <a routerLink="/home" routerLinkActive="active"  ariaCurrentWhenActive="page">Home</a></div>
   <div class="elementNavbar"><a routerLink="/boite-a-livres" routerLinkActive="active"  ariaCurrentWhenActive="page">Boites à livre</a></div>
   <div class="elementNavbar"><a routerLink="/map" routerLinkActive="active" ariaCurrentWhenActive="page">Carte</a></div>
+  <div class="elementNavbar"><a routerLink="/reservation" routerLinkActive="active" ariaCurrentWhenActive="page">Reservation</a></div>
   <div class="elementNavbar" *ngIf="!userIsConnected()"><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Connexion</a></div>
   <div class="elementNavbar" *ngIf="userIsConnected()" (click)="disconnect()"><a>Déconnexion</a></div>
 </nav>
