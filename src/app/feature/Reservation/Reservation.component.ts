@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
 import {ReservationService} from '../../shared/services/reservation.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -8,7 +8,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {ReservationDTO} from '../../shared/models/reservation';
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../shared/services/user.service";
 import {BoxService} from "../../shared/services/box.service";
 import {Box} from "../../shared/models/box";
 
@@ -16,7 +15,7 @@ import {Box} from "../../shared/models/box";
   selector: 'app-reservation-form',
   standalone: true,
   imports: [
-    FormsModule,
+    ReactiveFormsModule,
     NgIf,
     MatFormFieldModule,
     MatInputModule,
@@ -29,15 +28,18 @@ import {Box} from "../../shared/models/box";
 export class ReservationFormComponent implements OnInit{
   successMessage: string = "";
   errorMessage: string = "";
-  quantity: number = 1;
-  userId: number = 0;
-  boxId: number = 0;
+  reservationForm: FormGroup;
+  private boxId: number = 0;
+  private userId: number = 0;
 
-  constructor(private reservationService: ReservationService,
+  constructor(private fb: FormBuilder,
+              private reservationService: ReservationService,
               private router: Router,
               private route: ActivatedRoute,
               private boxService: BoxService) {
-
+    this.reservationForm = this.fb.group({
+      quantity: [1, [Validators.required, Validators.min(1)]]
+    });
   }
 
   ngOnInit() {
@@ -60,20 +62,21 @@ export class ReservationFormComponent implements OnInit{
   }
 
   onSubmit(): void {
-    if (this.userId == null || this.boxId == null) {
-      this.errorMessage = 'Les identifiants utilisateur et boîte sont nécessaires.';
+    if (this.reservationForm.invalid) {
+      this.errorMessage = 'Le formulaire est invalide.';
       return;
     }
+    const quantity = this.reservationForm.get('quantity')?.value;
     this.boxService.getById(this.boxId).subscribe({
       next: (box: Box) => {
-        if (this.quantity > box.quantite) {
+        if (quantity > box.quantite) {
           this.errorMessage = 'La quantité demandée est supérieure à la quantité disponible';
           return;
         }
         const res: ReservationDTO = {
-          utilisateur_id: this.userId,
-          boite_id: this.boxId,
-          reservation: this.quantity,
+          id_user: this.userId,
+          id_box: this.boxId,
+          reservation: quantity,
         };
         this.reservationService.create(res).subscribe({
           next: (response) => {

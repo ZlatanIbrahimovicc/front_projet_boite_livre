@@ -1,15 +1,20 @@
 <mat-card class="box-card">
   <mat-card-title>Créer une réservation</mat-card-title>
   <mat-card-content>
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <mat-label>Quantité</mat-label>
-        <input matInput [(ngModel)]="quantity" type="number" name="quantity" required />
+        <input matInput formControlName="quantity" type="number" required />
+        <mat-error *ngIf="reservationForm.get('quantity')?.hasError('required')">
+          Quantité est requise
+        </mat-error>
+        <mat-error *ngIf="reservationForm.get('quantity')?.hasError('min')">
+          Quantité doit être au moins 1
+        </mat-error>
       </mat-form-field>
 
       <button class="btn" type="submit">Réserver</button>
     </form>
-
 
     <div *ngIf="successMessage" class="success-message">
       {{ successMessage }}
@@ -19,7 +24,3 @@
     </div>
   </mat-card-content>
 </mat-card>
-
-
-
-

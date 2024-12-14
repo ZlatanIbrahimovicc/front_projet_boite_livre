@@ -9,7 +9,7 @@ export interface Reservation {
 }
 
 export interface ReservationDTO {
-  utilisateur_id: number;
-  boite_id: number;
+  id_user: number;
+  id_box: number;
   reservation: number;
 }
