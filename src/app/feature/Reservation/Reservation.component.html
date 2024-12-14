@@ -1,31 +1,24 @@
-<div>
-  <mat-card>
-    <mat-card-title>Créer une réservation</mat-card-title>
-    <mat-card-content>
-      <form (ngSubmit)="onSubmit()">
-        <mat-form-field>
-          <mat-label>ID Utilisateur</mat-label>
-          <input matInput [(ngModel)]="userId" name="userId" required />
-        </mat-form-field>
+<mat-card class="box-card">
+  <mat-card-title>Créer une réservation</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Quantité</mat-label>
+        <input matInput [(ngModel)]="quantity" type="number" name="quantity" required />
+      </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>ID Boîte</mat-label>
-          <input matInput [(ngModel)]="boxId" name="boxId" required />
-        </mat-form-field>
-
-        <button mat-raised-button type="submit">Soumettre</button>
-      </form>
+      <button class="btn" type="submit">Réserver</button>
+    </form>
 
 
-      <div *ngIf="successMessage" class="success-message">
-        {{ successMessage }}
-      </div>
-      <div *ngIf="errorMessage" class="error-message">
-        {{ errorMessage }}
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </mat-card-content>
+</mat-card>
 
 
 
