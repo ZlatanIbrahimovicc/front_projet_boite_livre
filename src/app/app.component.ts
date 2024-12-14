@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import {RouterLinkActive, RouterOutlet} from '@angular/router';
-import {TableauComponent} from "./feature/tableau/tableau.component";
-import {NavbarComponent} from "./core/navbar/navbar.component";
-import {HomeComponent} from "./feature/home/home.component";
+import {RouterOutlet} from '@angular/router';
+import {NavbarComponent} from "./shared/core/navbar/navbar.component";
 
 @Component({
   selector: 'app-root',

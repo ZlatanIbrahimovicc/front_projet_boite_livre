@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {NgIf} from "@angular/common";
-import {AuthService} from "../../shared/auth/auth.service";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-navbar',
@@ -26,6 +26,6 @@ export class NavbarComponent implements OnInit {
   }
 
   disconnect() {
-    this.authService.logOut().then(r => r);
+    this.authService.logOut().then((r: any) => r);
   }
 }

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../../shared/auth/auth.service";
-import {BoxService} from "../../shared/services/box.service";
-import {Box} from "../../shared/models/box";
-import {JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {AuthService} from "../../../shared/auth/auth.service";
+import {BoxService} from "../../../shared/services/box.service";
+import {Box} from "../../../shared/models/box";
+import {NgForOf, NgIf} from "@angular/common";
 import {
   MatCard,
   MatCardActions,
@@ -11,7 +11,6 @@ import {
   MatCardHeader, MatCardModule
 } from "@angular/material/card";
 import {MatTableDataSource} from "@angular/material/table";
-import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-detail',
@@ -22,14 +21,13 @@ import {MatButton} from "@angular/material/button";
     NgForOf,
     MatCardContent,
     MatCardActions,
-    MatButton,
     MatCardModule,
     NgIf
   ],
-  templateUrl: './detail.component.html',
-  styleUrl: './detail.component.css'
+  templateUrl: './boite-a-livre-detail.component.html',
+  styleUrl: './boite-a-livre-detail.component.css'
 })
-export class DetailComponent implements OnInit {
+export class BoiteALivreDetailComponent implements OnInit {
   dataSource: MatTableDataSource<Box> = new MatTableDataSource<Box>();
 
   constructor(private router: Router,
@@ -48,11 +46,11 @@ export class DetailComponent implements OnInit {
   }
 
   goToEdit(id: number): void {
-
+    this.router.navigate([`boite-a-livres/${id}/edit`]).then(r => r);
   }
 
   book(id: number): void {
-
+    this.router.navigate([`boite-a-livres/${id}/reservation`]).then(r => r);
   }
 
 }

@@ -44,5 +44,20 @@ body{
   to {background-position: 500px 0;}
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+button, .btn {
+  cursor: pointer;
+  background-color: #6cab6c;
+  color: #100f0f;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  margin: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 300ms all ease-in-out;
+}
+
+button:hover, .btn:hover {
+  background-color: #5a8f5a;
+}

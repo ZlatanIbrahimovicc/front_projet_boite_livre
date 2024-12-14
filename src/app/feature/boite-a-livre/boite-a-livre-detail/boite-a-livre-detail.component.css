@@ -1,0 +1,45 @@
+.box-card {
+  width: 40%;
+  margin: 40px auto;
+  padding: 20px;
+  font-size: 1.2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.box-card mat-card-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.box-card mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.box-card mat-card-subtitle {
+  font-size: 1rem;
+  color: #777;
+}
+
+.box-card mat-card-content p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.box-card mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  margin-top: 10px;
+}

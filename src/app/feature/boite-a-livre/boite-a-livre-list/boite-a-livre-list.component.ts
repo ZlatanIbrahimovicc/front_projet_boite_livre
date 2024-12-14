@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {Box} from "../../shared/models/box";
+import {Box} from "../../../shared/models/box";
 import {HttpClientModule} from "@angular/common/http";
-import {BoxService} from "../../shared/services/box.service";
+import {BoxService} from "../../../shared/services/box.service";
 import {
   MatCell,
   MatCellDef,
@@ -43,10 +43,10 @@ import {Router} from "@angular/router";
     MatFormField,
     MatInput,
   ],
-  templateUrl: './tableau.component.html',
-  styleUrls: ['./tableau.component.css']
+  templateUrl: './boite-a-livre-list.component.html',
+  styleUrls: ['./boite-a-livre-list.component.css']
 })
-export class TableauComponent implements OnInit, AfterViewInit {
+export class BoiteALivreListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nom', 'quantite', 'description', 'point_geo'];
   dataSource: MatTableDataSource<Box> = new MatTableDataSource<Box>();
 

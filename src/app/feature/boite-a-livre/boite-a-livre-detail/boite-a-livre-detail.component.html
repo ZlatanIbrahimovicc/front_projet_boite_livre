@@ -8,7 +8,7 @@
     <p>Coordonnées géographiques : {{ box.point_geo }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button *ngIf="authService.getUser() !== null" (click)="goToEdit(box.id)">Edit</button>
-    <button mat-button (click)="book(box.id)">Réserver</button>
+    <button class="btn" *ngIf="authService.getUser() !== null" (click)="goToEdit(box.id)">Modifier</button>
+    <button class="btn" *ngIf="authService.getUser() !== null" (click)="book(box.id)">Réserver</button>
   </mat-card-actions>
 </mat-card>
