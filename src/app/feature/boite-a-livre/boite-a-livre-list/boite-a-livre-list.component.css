@@ -24,3 +24,24 @@
   overflow: auto;
   max-height: 500px;
 }
+
+.add-box {
+  margin: 15px 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-box button {
+  background-color: #baf3aa;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.add-box button:hover {
+  background-color: #8ede76;
+}

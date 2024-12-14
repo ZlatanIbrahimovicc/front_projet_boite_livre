@@ -4,7 +4,7 @@
     <mat-card-content>
       <form (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill" class="input">
-          <input matInput placeholder="Nom" type="text" id="nom" name="nom" [(ngModel)]="item.nom" disabled>
+          <input matInput placeholder="Nom" type="text" id="nom" name="nom" [(ngModel)]="item.nom">
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="input">
@@ -16,7 +16,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="input">
-          <input matInput placeholder="Point Géo" type="text" id="point_geo" name="point_geo" [(ngModel)]="item.point_geo">
+          <input matInput placeholder="Coordonnées géographiques" type="text" id="point_geo" name="point_geo" [(ngModel)]="item.point_geo">
         </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit">Submit</button>

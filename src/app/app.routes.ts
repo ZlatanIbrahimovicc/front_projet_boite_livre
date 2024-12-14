@@ -17,6 +17,7 @@ import {
 export const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'boite-a-livres', component: BoiteALivreListComponent},
+  {path: 'boite-a-livres/add', component: BoiteALivreFormComponent, canActivate: [needLoginGuard]},
   {path: 'boite-a-livres/:id', component: BoiteALivreDetailComponent},
   {path: 'boite-a-livres/:id/edit', component: BoiteALivreFormComponent, canActivate: [needLoginGuard]},
   {path: 'boite-a-livres/:id/reservation', component: ReservationFormComponent, canActivate: [needLoginGuard]},

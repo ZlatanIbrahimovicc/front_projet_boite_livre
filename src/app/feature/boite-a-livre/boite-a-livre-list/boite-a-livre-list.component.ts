@@ -21,6 +21,7 @@ import {MatFormField} from "@angular/material/form-field";
 import {Observable} from 'rxjs';
 import {MatInput} from "@angular/material/input";
 import {Router} from "@angular/router";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-tableau',
@@ -42,6 +43,7 @@ import {Router} from "@angular/router";
     MatPaginatorModule,
     MatFormField,
     MatInput,
+    MatButton,
   ],
   templateUrl: './boite-a-livre-list.component.html',
   styleUrls: ['./boite-a-livre-list.component.css']
@@ -78,5 +80,9 @@ export class BoiteALivreListComponent implements OnInit, AfterViewInit {
 
   goToForm(id: number) {
     this.router.navigate([`/boite-a-livres/${id}`]).then(r => r);
+  }
+
+  addBox() {
+    this.router.navigate(['/boite-a-livres/add']).then(r => r);
   }
 }
