@@ -31,6 +31,7 @@ export class ReservationFormComponent implements OnInit{
   reservationForm: FormGroup;
   private boxId: number = 0;
   private userId: number = 0;
+  protected isEditMode: boolean = false;
 
   constructor(private fb: FormBuilder,
               private reservationService: ReservationService,
@@ -44,8 +45,11 @@ export class ReservationFormComponent implements OnInit{
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.boxId = params['id'];
+      this.boxId = params['boite-id'] || params['id'];
+      this.userId = params['user-id'];
+      this.isEditMode = !!params['user-id'] && !!params['boite-id'];
     });
+
     const userString = localStorage.getItem('user');
     if (userString) {
       const user = JSON.parse(userString);
@@ -55,10 +59,23 @@ export class ReservationFormComponent implements OnInit{
       return;
     }
 
-    if (this.userId == null || this.boxId == null) {
-      this.errorMessage = 'Les identifiants utilisateur et boîte sont nécessaires.';
-      return;
+    if (this.isEditMode) {
+      this.loadReservation();
     }
+  }
+
+  loadReservation() {
+    this.reservationService.getOneByUserAndBox(this.userId, this.boxId).subscribe({
+      next: (reservation: ReservationDTO) => {
+        this.reservationForm.patchValue({
+          quantity: reservation.reservation
+        });
+      },
+      error: (err: any) => {
+        this.errorMessage = 'Erreur lors du chargement de la réservation.';
+        console.error('Erreur backend :', err);
+      }
+    });
   }
 
   onSubmit(): void {
@@ -78,21 +95,42 @@ export class ReservationFormComponent implements OnInit{
           id_box: this.boxId,
           reservation: quantity,
         };
-        this.reservationService.create(res).subscribe({
-          next: (response) => {
-            this.successMessage = 'Réservation créée avec succès !';
-            this.errorMessage = "";
-            this.router.navigate(['/home']).then(r => r);
-
-          },
-          error: (err: any) => {
-            this.errorMessage = 'Erreur lors de la création de la réservation.';
-            this.successMessage = "";
-            console.error('Erreur backend :', err);
-          },
-        });
+        if (this.isEditMode) {
+          this.updateReservation(res);
+        } else {
+          this.createReservation(res);
+        }
       }
     });
+  }
 
-}
+  createReservation(res: ReservationDTO) {
+    this.reservationService.create(res).subscribe({
+      next: (response) => {
+        this.successMessage = 'Réservation créée avec succès !';
+        this.errorMessage = "";
+        this.router.navigate(['/home']).then(r => r);
+      },
+      error: (err: any) => {
+        this.errorMessage = 'Erreur lors de la création de la réservation.';
+        this.successMessage = "";
+        console.error('Erreur backend :', err);
+      },
+    });
+  }
+
+  updateReservation(res: ReservationDTO) {
+    this.reservationService.updateByUserIdAndBoxId(res.id_user, res.id_box, res).subscribe({
+      next: (response) => {
+        this.successMessage = 'Réservation mise à jour avec succès !';
+        this.errorMessage = "";
+        this.router.navigate(['/home']).then(r => r);
+      },
+      error: (err: any) => {
+        this.errorMessage = 'Erreur lors de la mise à jour de la réservation.';
+        this.successMessage = "";
+        console.error('Erreur backend :', err);
+      },
+    });
+  }
 }

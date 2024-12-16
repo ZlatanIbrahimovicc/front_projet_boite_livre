@@ -1,5 +1,9 @@
 <mat-card class="box-card">
-  <mat-card-title>Créer une réservation</mat-card-title>
+  <mat-card-title>
+    <span *ngIf="isEditMode">Modifier</span>
+    <span *ngIf="!isEditMode">Créer</span>
+    une réservation
+  </mat-card-title>
   <mat-card-content>
     <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
       <mat-form-field>

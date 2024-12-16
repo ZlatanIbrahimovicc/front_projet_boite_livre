@@ -65,7 +65,6 @@ export class ReservationListComponent implements OnInit, AfterViewInit {
         this.userService.getById(reservation.id_user).subscribe(user => {
           this.boxService.getById(reservation.id_box).subscribe(box => {
             const casted_reservation: Reservation = {
-              id: reservation.reservation,
               utilisateur: user,
               boite: box,
               reservation: reservation.reservation
@@ -87,7 +86,11 @@ export class ReservationListComponent implements OnInit, AfterViewInit {
     this.datasource.filter = filterValue.trim().toLowerCase();
   }
 
-  goToDetail(id: number) {
-    this.router.navigate([`/reservations/${id}`]).then(r => r);
+  goToDetail(reservation: Reservation) {
+    // Get the element by id in the datasource
+    console.log(reservation);
+    let user_id = reservation?.utilisateur.id;
+    let box_id = reservation?.boite.id;
+    this.router.navigate([`/reservations/users/${user_id}/boite-a-livres/${box_id}`]).then(r => r);
   }
 }
