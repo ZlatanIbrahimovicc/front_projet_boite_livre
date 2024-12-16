@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {AuthService} from "../../auth/auth.service";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,8 @@ import {AuthService} from "../../auth/auth.service";
   imports: [
     RouterLink,
     RouterLinkActive,
-    NgIf
+    NgIf,
+    MatIcon
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
