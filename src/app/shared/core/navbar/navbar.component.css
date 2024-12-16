@@ -1,26 +1,27 @@
-.navbar{
+.navbar {
   display: flex;
-  justify-content: center;
-  gap: 15%;
+  justify-content: space-evenly;
   background-color: beige;
-  padding: 2rem;
   overflow: hidden;
+  padding: 3rem 2rem;
 }
 
-.navbar a {
+.elementNavbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.elementNavbar a {
   display: flex;
   color: black;
   text-decoration: none;
   font-size: 1.5rem;
   align-items: center;
   line-height: 20px;
-}
-
-.elementNavbar a{
-  transition: color 0.5s, transform 0.2s, background-color 0.2s;
   padding: 0.5rem;
-  cursor: pointer;
-  font-family: OCR A Std, monospace;
+  transition: all 0.3s ease-in-out;
 }
 
 .elementNavbar a:hover {
@@ -31,10 +32,13 @@
   transform: translate(3px);
 }
 
-.large-icon {
-  font-size: 2rem;
-  overflow: visible;
+.elementNavbar mat-icon {
+  font-size: 2.3rem;
+  margin: 10px;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin-right: 10px;
-  vertical-align: middle; /* Ajoutez cette ligne pour centrer verticalement */
+  overflow: hidden;
 }

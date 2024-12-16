@@ -1,32 +1,32 @@
-<nav class="navbar">
+<mat-toolbar color="primary" class="navbar">
   <div class="elementNavbar">
-    <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
-      <mat-icon class="large-icon">home</mat-icon> Home
+    <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-icon>home</mat-icon> Home
     </a>
   </div>
   <div class="elementNavbar">
-    <a routerLink="/boite-a-livres" routerLinkActive="active" ariaCurrentWhenActive="page">
-      <mat-icon class="large-icon">book</mat-icon> Boites à livre
+    <a mat-button routerLink="/boite-a-livres" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-icon>book</mat-icon> Boites à livre
     </a>
   </div>
   <div class="elementNavbar">
-    <a routerLink="/map" routerLinkActive="active" ariaCurrentWhenActive="page">
-      <mat-icon class="large-icon">map</mat-icon> Carte
+    <a mat-button routerLink="/map" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-icon>map</mat-icon> Carte
     </a>
   </div>
   <div class="elementNavbar">
-    <a routerLink="/reservations" routerLinkActive="active" ariaCurrentWhenActive="page">
-      <mat-icon class="large-icon">map</mat-icon> Réservations
+    <a mat-button routerLink="/reservations" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-icon>event</mat-icon> Réservations
     </a>
   </div>
   <div class="elementNavbar" *ngIf="!userIsConnected()">
-    <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
-      <mat-icon class="large-icon">login</mat-icon> Connexion
+    <a mat-button routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-icon>login</mat-icon> Connexion
     </a>
   </div>
-  <div class="elementNavbar" *ngIf="userIsConnected()" (click)="disconnect()">
-    <a>
-      <mat-icon class="large-icon">logout</mat-icon> Déconnexion
+  <div class="elementNavbar" *ngIf="userIsConnected()">
+    <a mat-button routerLink="/logout" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-icon>logout</mat-icon> Déconnexion
     </a>
   </div>
-</nav>
+</mat-toolbar>
