@@ -1,0 +1,28 @@
+<div class="mat-elevation-z8 table">
+  <div class="filter">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <mat-table [dataSource]="datasource" matSort>
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+      <mat-cell *matCellDef="let reservation"> {{reservation.utilisateur.username}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="boxname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Box Name </mat-header-cell>
+      <mat-cell *matCellDef="let reservation"> {{reservation.boite.nom }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantite">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Quantité </mat-header-cell>
+      <mat-cell *matCellDef="let reservation"> {{reservation.reservation}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="goToDetail(row.id)"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[15, 30, 60]" showFirstLastButtons></mat-paginator>
+</div>

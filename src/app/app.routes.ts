@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import {HomeComponent} from "./feature/home/home.component";
 import {MapComponent} from "./feature/map/map.component";
-import {ReservationFormComponent} from "./feature/Reservation/Reservation.component";
 import {needLoginGuard, needLogOutGuard} from "./shared/auth/auth.guard";
 import {LoginComponent} from "./feature/login/login.component";
 import {
@@ -13,6 +12,12 @@ import {
 import {
   BoiteALivreFormComponent
 } from "./feature/boite-a-livre/boite-a-livre-form/boite-a-livre-form.component";
+import {
+  ReservationListComponent
+} from "./feature/reservations/reservation-list/reservation-list.component";
+import {
+  ReservationFormComponent
+} from "./feature/reservations/reservation-form/reservation-form.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -23,7 +28,10 @@ export const routes: Routes = [
   {path: 'boite-a-livres/:id/reservation', component: ReservationFormComponent, canActivate: [needLoginGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'map', component: MapComponent},
-  {path: 'reservation', component: ReservationFormComponent},
+  {path: 'reservations', component: ReservationListComponent},
+  {path: 'reservations/:id', component: ReservationListComponent},
+  {path: 'reservations/:id/edit', component: ReservationFormComponent},
+  {path: 'reservations/new', component: ReservationFormComponent},
   {path: 'login', component: LoginComponent, canActivate: [needLogOutGuard]},
   {path: 'logout', component: LoginComponent, canActivate: [needLoginGuard]},
   {path: '**', redirectTo: ''}

@@ -14,6 +14,11 @@
       <mat-icon class="large-icon">map</mat-icon> Carte
     </a>
   </div>
+  <div class="elementNavbar">
+    <a routerLink="/reservations" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-icon class="large-icon">map</mat-icon> Réservations
+    </a>
+  </div>
   <div class="elementNavbar" *ngIf="!userIsConnected()">
     <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
       <mat-icon class="large-icon">login</mat-icon> Connexion

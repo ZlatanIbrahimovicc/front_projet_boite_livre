@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Reservation } from '../models/reservation';
+import {Reservation, ReservationDTO} from '../models/reservation';
 import {Service} from "./service";
 
 @Injectable({
@@ -13,8 +13,8 @@ export class ReservationService extends Service {
     this.API_ENTITY_NAME = 'reservations';
   }
 
-  override getAll(): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
+  override getAll(): Observable<ReservationDTO[]> {
+    return this.http.get<ReservationDTO[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
   }
 
   override create(entity: any): Observable<any> {

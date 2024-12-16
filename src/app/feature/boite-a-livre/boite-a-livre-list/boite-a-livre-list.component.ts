@@ -78,7 +78,7 @@ export class BoiteALivreListComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  goToForm(id: number) {
+  goToDetail(id: number) {
     this.router.navigate([`/boite-a-livres/${id}`]).then(r => r);
   }
 

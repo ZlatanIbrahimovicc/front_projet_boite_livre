@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
-import {ReservationService} from '../../shared/services/reservation.service';
+import {ReservationService} from '../../../shared/services/reservation.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-import {ReservationDTO} from '../../shared/models/reservation';
+import {ReservationDTO} from '../../../shared/models/reservation';
 import {ActivatedRoute, Router} from "@angular/router";
-import {BoxService} from "../../shared/services/box.service";
-import {Box} from "../../shared/models/box";
+import {BoxService} from "../../../shared/services/box.service";
+import {Box} from "../../../shared/models/box";
 
 @Component({
   selector: 'app-reservation-form',
@@ -22,8 +22,8 @@ import {Box} from "../../shared/models/box";
     MatCardModule,
     MatButtonModule,
   ],
-  templateUrl: './Reservation.component.html',
-  styleUrls: ['./Reservation.component.css'],
+  templateUrl: './reservation-form.component.html',
+  styleUrls: ['./reservation-form.component.css'],
 })
 export class ReservationFormComponent implements OnInit{
   successMessage: string = "";
