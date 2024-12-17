@@ -19,6 +19,11 @@
       <mat-icon>event</mat-icon> Réservations
     </a>
   </div>
+  <div class="elementNavbar">
+    <a mat-button routerLink="/users" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-icon>event</mat-icon> users
+    </a>
+  </div>
   <div class="elementNavbar" *ngIf="!userIsConnected()">
     <a mat-button routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
       <mat-icon>login</mat-icon> Connexion

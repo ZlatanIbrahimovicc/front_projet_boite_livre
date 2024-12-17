@@ -10,6 +10,7 @@ import { ReservationListComponent } from './feature/reservations/reservation-lis
 import { ReservationFormComponent } from './feature/reservations/reservation-form/reservation-form.component';
 import { ReservationDetailComponent } from './feature/reservations/reservation-detail/reservation-detail.component';
 import {LogoutComponent} from "./feature/logout/logout.component";
+import {UsersComponent} from "./feature/Users/Users.component";
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'boite-a-livres/:id/reservation', component: ReservationFormComponent, canActivate: [needLoginGuard] },
   { path: 'map', component: MapComponent },
   { path: 'reservations', component: ReservationListComponent },
+  { path: 'users', component: UsersComponent },
   { path: 'reservations/users/:user-id/boite-a-livres/:boite-id', component: ReservationDetailComponent, canActivate: [needLoginGuard] },
   { path: 'reservations/users/:user-id/boite-a-livres/:boite-id/edit', component: ReservationFormComponent, canActivate: [needLoginGuard] },
   { path: 'login', component: LoginComponent, canActivate: [needLogOutGuard] },

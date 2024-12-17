@@ -8,6 +8,7 @@ import {Service} from "./service";
   providedIn: 'root'
 })
 export class UserService extends Service {
+
   constructor(protected override http: HttpClient) {
     super(http);
     this.API_ENTITY_NAME = 'users';
@@ -19,5 +20,14 @@ export class UserService extends Service {
 
   override create(entity: any): Observable<any> {
     return this.http.post(`${this.API_URL}/${this.API_ENTITY_NAME}`, entity);
+  }
+  override delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
+  }
+  //override update(entity: any): Observable<any> {
+  //  return super.update(entity);
+  //}
+  override update(entity: any): Observable<any> {
+    return this.http.put(`${this.API_URL}/${this.API_ENTITY_NAME}`, entity);
   }
 }
