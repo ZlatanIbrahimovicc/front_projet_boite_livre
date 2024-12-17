@@ -50,7 +50,7 @@ export class BoiteALivreDetailComponent implements OnInit {
   }
 
   book(id: number): void {
-    this.router.navigate([`boite-a-livres/${id}/reservations/new`]).then(r => r);
+    this.router.navigate([`boite-a-livres/${id}/reservation/`]).then(r => r);
   }
 
 }
