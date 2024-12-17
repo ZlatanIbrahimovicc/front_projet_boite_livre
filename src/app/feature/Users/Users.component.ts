@@ -85,6 +85,24 @@ export class UsersComponent implements OnInit {
     this.userService.create(user).subscribe(() => {this.fetchUsers();this.resetForm();});
   }
 
+  onMoifie():void{
+    if(this.userForm.invalid) return;
+    const email = this.userForm.get('mail')?.value;
+    const password = this.userForm.get('password')?.value;
+    this.userService.emailAndPasswordExists(email, password).subscribe(exists => {
+      if(exists) {
+        alert("Cette personne n'existe pas dans la base de donné")
+      }else {
+        const user: User = this.userForm.value;
+        this.userService.update(user).subscribe(() => {
+          this.resetForm();
+
+        })
+      }
+    })
+
+  }
+
   onDelete(id: number): void {
     this.userService.delete(id).subscribe(() => {
       this.fetchUsers();

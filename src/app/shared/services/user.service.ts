@@ -17,6 +17,18 @@ export class UserService extends Service {
   override getAll(): Observable<User[]> {
     return this.http.get<User[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
   }
+  email(email: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.API_URL}/${this.API_ENTITY_NAME}/email-exists?email=${email}`);
+  }
+  password(password: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.API_URL}/${this.API_ENTITY_NAME}/email-exists?email=${password}`);
+  }
+
+  emailAndPasswordExists(email: string, password: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      `${this.API_URL}/${this.API_ENTITY_NAME}/email-password-exists?email=${email}&password=${password}`
+    );
+  }
 
   override create(entity: any): Observable<any> {
     return this.http.post(`${this.API_URL}/${this.API_ENTITY_NAME}`, entity);

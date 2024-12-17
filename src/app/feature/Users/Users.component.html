@@ -30,6 +30,9 @@
         <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Ajouter</button>
         <button mat-raised-button color="warn" type="button" (click)="resetForm()" *ngIf="isEditMode">Annuler</button>
       </div>
+        <button mat-icon-button color="warn" (click)="onMoifie()">
+            Modifier
+        </button>
     </form>
   </mat-card>
 
