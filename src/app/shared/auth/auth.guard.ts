@@ -11,10 +11,8 @@ export const needLoginGuard: CanActivateFn = async () => {
   const router = inject(Router);
 
   if (authService.getUser() !== null) {
-    console.log('User is authenticated.');
     return true;
   } else {
-    console.log('User is not authenticated. Redirecting to login page.');
     await router.navigate(['/login']);
     return false;
   }
@@ -28,11 +26,9 @@ export const needLogOutGuard: CanActivateFn = async () => {
   const router = inject(Router);
 
   if (authService.getUser() !== null) {
-    console.log('User is authenticated. Redirecting to main page.');
     await router.navigate(['/materials']);
     return false;
   } else {
-    console.log('User is not authenticated.');
     return true;
   }
 };

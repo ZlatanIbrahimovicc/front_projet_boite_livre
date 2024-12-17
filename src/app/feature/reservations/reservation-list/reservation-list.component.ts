@@ -23,6 +23,8 @@ import {UserService} from "../../../shared/services/user.service";
 import {BoxService} from "../../../shared/services/box.service";
 import {User} from "../../../shared/models/user";
 import {Box} from "../../../shared/models/box";
+import {MatButton} from "@angular/material/button";
+import {NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-reservation-list',
@@ -41,7 +43,10 @@ import {Box} from "../../../shared/models/box";
     MatRow,
     MatHeaderRowDef,
     MatRowDef,
-    MatPaginator
+    MatPaginator,
+    MatButton,
+    NgIf,
+    NgClass
   ],
   templateUrl: './reservation-list.component.html',
   styleUrl: './reservation-list.component.css'
@@ -52,6 +57,7 @@ export class ReservationListComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  protected isFilteredByCurrentUser: boolean = false;
 
   constructor(private reservationService: ReservationService,
               private router: Router,
@@ -88,9 +94,22 @@ export class ReservationListComponent implements OnInit, AfterViewInit {
 
   goToDetail(reservation: Reservation) {
     // Get the element by id in the datasource
-    console.log(reservation);
     let user_id = reservation?.utilisateur.id;
     let box_id = reservation?.boite.id;
     this.router.navigate([`/reservations/users/${user_id}/boite-a-livres/${box_id}`]).then(r => r);
+  }
+
+  isUserConnected() {
+    return localStorage.getItem('user') !== null;
+  }
+
+  filterByCurrentUser() {
+    if (this.isFilteredByCurrentUser) {
+      this.datasource.filter = '';
+    } else {
+      let currentUser: User = JSON.parse(localStorage.getItem('user') || '{}');
+      this.datasource.filter = currentUser.username;
+    }
+    this.isFilteredByCurrentUser = !this.isFilteredByCurrentUser;
   }
 }

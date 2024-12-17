@@ -45,3 +45,7 @@
 .add-box button:hover {
   background-color: #8ede76;
 }
+
+.active-filter-button {
+  background-color: #baf3aa;
+}
