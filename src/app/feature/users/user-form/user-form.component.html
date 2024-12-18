@@ -1,0 +1,41 @@
+<div class="container">
+  <mat-card class="card">
+    <h2 *ngIf="isEditMode">Modifier l'utilisateur</h2>
+    <h2 *ngIf="!isEditMode">Ajouter l'utilisateur</h2>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Prénom</mat-label>
+        <input matInput formControlName="prenom" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="mail" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" *ngIf="!isEditMode">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nom d'utilisateur</mat-label>
+        <input matInput formControlName="username" required />
+      </mat-form-field>
+
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">
+          <span *ngIf="!isEditMode">Ajouter</span>
+          <span *ngIf="isEditMode">Modifier</span>
+        </button>
+        <button mat-raised-button color="warn" type="button" (click)="resetForm()">Annuler</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

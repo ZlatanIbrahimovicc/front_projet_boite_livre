@@ -10,7 +10,11 @@ import { ReservationListComponent } from './feature/reservations/reservation-lis
 import { ReservationFormComponent } from './feature/reservations/reservation-form/reservation-form.component';
 import { ReservationDetailComponent } from './feature/reservations/reservation-detail/reservation-detail.component';
 import {LogoutComponent} from "./feature/logout/logout.component";
-import {UsersComponent} from "./feature/Users/Users.component";
+import {UserListComponent} from "./feature/users/user-list/user-list.component";
+import {
+  UserDetailComponent
+} from "./feature/users/user-detail/user-detail.component";
+import {UserFormComponent} from "./feature/users/user-form/user-form.component";
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +25,10 @@ export const routes: Routes = [
   { path: 'boite-a-livres/:id/reservation', component: ReservationFormComponent, canActivate: [needLoginGuard] },
   { path: 'map', component: MapComponent },
   { path: 'reservations', component: ReservationListComponent },
-  { path: 'users', component: UsersComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'users/new', component: UserFormComponent, canActivate: [needLoginGuard] },
+  { path: 'users/:id', component: UserDetailComponent },
+  { path: 'users/:id/edit', component: UserFormComponent, canActivate: [needLoginGuard] },
   { path: 'reservations/users/:user-id/boite-a-livres/:boite-id', component: ReservationDetailComponent, canActivate: [needLoginGuard] },
   { path: 'reservations/users/:user-id/boite-a-livres/:boite-id/edit', component: ReservationFormComponent, canActivate: [needLoginGuard] },
   { path: 'login', component: LoginComponent, canActivate: [needLogOutGuard] },

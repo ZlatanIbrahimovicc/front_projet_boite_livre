@@ -1,0 +1,15 @@
+<mat-card class="user-detail-card">
+  <mat-card-header>
+    <mat-card-title>Détails de l'utilisateur</mat-card-title>
+  </mat-card-header>
+  <mat-card-content *ngIf="user">
+    <p><strong>ID:</strong> {{ user.id }}</p>
+    <p><strong>Nom:</strong> {{ user.nom }}</p>
+    <p><strong>Prénom:</strong> {{ user.prenom }}</p>
+    <p><strong>Email:</strong> {{ user.mail }}</p>
+    <p><strong>Nom d'utilisateur:</strong> {{ user.username }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="goToEdit(user?.id)">Modifier</button>
+  </mat-card-actions>
+</mat-card>
